@@ -170,52 +170,64 @@ nav a:hover {
 /* #region Главная страница темы статей и исследований*/
 
 #themes-header{
-    margin: 20px;
+    margin: 10px;
     margin-top: 35px;
     font-size: 40px;
     font-weight: bold;
 }
 
-.main-page-themes-menu{
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-    margin-top: 35px;
-    margin-bottom: 50px;
-    list-style: none;
-    color: #000;
-    text-decoration: none;
+.research-topics {
+    width: 90%;
+    max-width: 1200px;
+    margin: 70px auto;
 }
 
-.main-page-themes-menu li{
-    display: flex;
-    font-size: 20px;
-    border: 1px solid #000;
-    border-radius: 8px;
-    height: 75px;
-    width: 200px;
-    padding: 0 10px;
-    justify-content: center;
+.topics-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 45px;
+}
+
+.topic-link {
+    display: grid;
+    grid-template-columns: 35px 1fr 25px;
     align-items: center;
-    text-align: center;
-    transition: .2s;
+
+    min-height: 60px;
+
+    color: #000;
+    text-decoration: none;
+
+    border-bottom: 1px solid #000;
+
+    transition: background-color 0.2s,
+                padding-left 0.2s;
 }
 
-.main-page-themes-menu li {
+.topic-number {
+    font-size: 13px;
+    color: #777;
+}
+
+.topic-name {
+    font-size: 18px;
+    line-height: 1.25;
+}
+
+.topic-arrow {
+    font-size: 21px;
+    text-align: right;
+    transition: transform 0.2s;
+}
+
+.topic-link:hover {
     background-color: #e8e2ff;
+    padding-left: 8px;
 }
 
-.main-page-themes-menu li:hover{
-    background-color: #ffd4b3;
-    color: #000;
-    text-decoration: none;
+.topic-link:hover .topic-arrow {
+    transform: translateX(5px);
 }
-
-.main-page-themes-menu li a{
-    color: #000;
-    text-decoration: none;
-}
-
 /* #endregion Главная страница темы статей и исследований*/
 
 /* #region QR Code Section */
@@ -297,45 +309,163 @@ nav a:hover {
 
 /* #region Research All Themes Section */
 
-.research-all-themes-titles {
-    margin: 20px;
-    font-size: 35px;
-    text-align: center;
-    cursor: pointer;
+.research-themes-dropdown {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
 }
 
-.research-all-themes-menu {
+
+/* ---------- ЗАГОЛОВОК ---------- */
+
+.research-all-themes-titles {
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    align-items: center;
+
+    padding: 18px 5px;
+
+    font-size: 30px;
+    cursor: pointer;
+
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+
     list-style: none;
 }
 
-.research-all-themes-menu li {
-    display: flex;
-    width: 230px;
-    height: 30px;
+
+/* Убираем стандартный треугольник браузера */
+
+.research-all-themes-titles::-webkit-details-marker {
+    display: none;
 }
 
-.research-all-themes-elements {
-    display: flex;
-    justify-content: center;
+
+/* Стрелка справа */
+
+.research-themes-arrow {
+    font-size: 28px;
+
+    transition: transform 0.2s;
+}
+
+
+/* Когда меню открыто */
+
+.research-themes-dropdown[open] .research-themes-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* ---------- СПИСОК ТЕМ ---------- */
+
+.research-topics-dropdown {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    column-gap: 45px;
+
+    margin-top: 20px;
+}
+
+
+/* ---------- ОДНА ТЕМА ---------- */
+
+.research-topic-link {
+    display: grid;
+
+    grid-template-columns: 35px 1fr 25px;
+
     align-items: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #4a267b;
-    border-radius: 8px;
-    background-color: #e8e2ff;
+
+    min-height: 60px;
+
     color: #000;
     text-decoration: none;
-    font-size: 15px;
-    transition: .2s;
+
+    border-bottom: 1px solid #000;
+
+    transition:
+        background-color 0.2s,
+        padding-left 0.2s;
 }
 
-.research-all-themes-elements:hover {
-    background-color: #4a267b;
-    color: #fff;
+
+/* Номер */
+
+.research-topic-number {
+    font-size: 13px;
+    color: #777;
 }
+
+
+/* Название */
+
+.research-topic-name {
+    font-size: 17px;
+    line-height: 1.25;
+}
+
+
+/* Стрелка */
+
+.research-topic-arrow {
+    font-size: 21px;
+    text-align: right;
+
+    transition: transform 0.2s;
+}
+
+
+/* Наведение */
+
+.research-topic-link:hover {
+    background-color: #e8e2ff;
+    padding-left: 8px;
+}
+
+.research-topic-link:hover .research-topic-arrow {
+    transform: translateX(5px);
+}
+
+
+/* ---------- МОБИЛЬНАЯ ВЕРСИЯ ---------- */
+
+@media (max-width: 600px) {
+
+    .research-themes-dropdown {
+        width: calc(100% - 30px);
+        margin: 35px auto;
+    }
+
+    .research-all-themes-titles {
+        font-size: 25px;
+        padding: 15px 5px;
+    }
+
+    .research-themes-arrow {
+        font-size: 24px;
+    }
+
+    .research-topics-dropdown {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        margin-top: 10px;
+    }
+
+    .research-topic-link {
+        grid-template-columns: 35px 1fr 25px;
+        min-height: 58px;
+    }
+
+    .research-topic-name {
+        font-size: 16px;
+    }
+
+}
+
 
 /* #endregion Research All Themes Section */
 
@@ -872,3 +1002,2402 @@ nav a:hover {
 }
 
 /* #endregion полная страница статьи*/
+
+/* #region МОБИЛЬНАЯ АДАПТАЦИЯ Применяется только на экранах шириной до 600px */
+
+@media (max-width: 600px) {
+
+    /* ---------- ОБЩЕЕ ---------- */
+
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        font-size: 16px;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+        height: auto;
+        min-height: 110px;
+        width: 100%;
+        padding: 15px 10px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .logo {
+        height: 70px;
+        width: auto;
+        max-width: 180px;
+        object-fit: contain;
+    }
+
+    nav {
+        width: 100%;
+        flex: none;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        font-size: 20px;
+    }
+
+    nav a {
+        white-space: nowrap;
+    }
+
+    .login {
+        width: min(100%, 270px);
+        margin: 0;
+        padding: 9px 15px;
+        font-size: 18px;
+    }
+
+
+    /* ---------- ГЛАВНАЯ: INFO ---------- */
+
+    .info {
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        padding: 0 15px 25px;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .info h1 {
+        font-size: 30px;
+        line-height: 1.15;
+        padding: 20px 0 0;
+        text-align: center;
+    }
+
+    .info p {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+        font-size: 18px;
+        line-height: 1.45;
+        text-align: justify;
+    }
+
+    .main-page-about-right {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .social-buttons {
+        width: 100%;
+        left: 0;
+        gap: 15px;
+        align-items: center;
+        order: 2;
+    }
+
+    /* Главная картинка скрывается только на мобильном.
+       Логотип в header этим правилом не затрагивается. */
+    .about-image {
+        display: none;
+    }
+
+    .main-page-button,
+    .switch-to-english {
+        width: min(100%, 300px);
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+
+
+    /* ---------- ТЕМЫ НА ГЛАВНОЙ ---------- */
+
+    #themes-header {
+        margin: 25px 15px 15px;
+        font-size: 30px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .main-page-themes-menu {
+        width: auto;
+        margin: 20px 15px 35px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .main-page-themes-menu li {
+        width: 100%;
+        min-height: 58px;
+        height: auto;
+        padding: 10px 8px;
+        font-size: 16px;
+        line-height: 1.15;
+    }
+
+
+    /* На очень маленьких телефонах возвращаем темы в одну колонку,
+       чтобы длинные названия не становились слишком тесными. */
+    @media (max-width: 360px) {
+        .main-page-themes-menu,
+        .research-all-themes-menu {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+    /* ---------- QR CODE ---------- */
+
+    .qr-code {
+        width: min(80vw, 300px);
+        height: auto;
+        margin: 30px auto;
+    }
+
+    .qr-code-text {
+        padding: 0 15px;
+        font-size: 18px;
+        line-height: 1.4;
+        margin-top: 25px;
+    }
+
+
+    /* ---------- ABOUT / RULES ---------- */
+
+    .about-rules-titles {
+        margin: 25px 15px;
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .about-rules-sec-p1,
+    .about-rules-sec-p2 {
+        margin: 15px;
+        padding: 20px;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .about-rules-sec-p1 ol,
+    .about-rules-sec-p2 ol {
+        padding-left: 25px;
+    }
+
+
+    /* ---------- СПИСОК ВСЕХ ИССЛЕДОВАНИЙ ---------- */
+
+    .research-all-themes-titles {
+        margin: 25px 15px 20px;
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .research-all-themes-menu {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin: 15px;
+    }
+
+    .research-all-themes-menu li {
+        width: 100%;
+        height: auto;
+        min-height: 42px;
+    }
+
+    .research-all-themes-elements {
+        min-height: 42px;
+        padding: 8px 6px;
+        font-size: 14px;
+        line-height: 1.15;
+        text-align: center;
+    }
+
+
+    /* ---------- КАРТОЧКА ИССЛЕДОВАНИЯ ---------- */
+
+    .research-layout {
+        width: calc(100% - 20px);
+        margin: 15px auto 25px;
+        padding: 18px 15px;
+        border-radius: 12px;
+    }
+
+    .research-head {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .research-left {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .name-short-inf {
+        font-size: 28px;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .info-line {
+        gap: 10px 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+        column-gap: 0;
+        margin-top: 15px;
+        padding-bottom: 20px;
+    }
+
+    .author-section,
+    .category-section,
+    .date-section,
+    .theme-section,
+    .language-section {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .author-short,
+    .category-short,
+    .date-short,
+    .theme-short,
+    .language-short,
+    .author-short-inf,
+    .category-short-inf,
+    .date-short-inf,
+    .theme-short-inf,
+    .language-short-inf {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+    }
+
+    .button-read {
+        width: 100%;
+        max-width: 140px;
+        height: auto;
+        min-height: 44px;
+        padding: 8px 15px;
+        font-size: 18px;
+    }
+
+    .keywords-section {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px 0;
+    }
+
+    .keywords-short,
+    .keywords-short-inf {
+        font-size: 17px;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+    }
+
+    .annotation-short {
+        font-size: 21px;
+        margin-top: 15px;
+    }
+
+    .annotation-short-inf {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+
+    /* ---------- ПОЛНАЯ СТРАНИЦА СТАТЬИ ---------- */
+
+    .article-page {
+        width: calc(100% - 30px);
+        max-width: none;
+        margin: 25px auto 50px;
+    }
+
+    .back-button {
+        margin-bottom: 25px;
+        font-size: 18px;
+        padding: 8px 15px;
+    }
+
+    /* На мобильном раскрываем содержимое article-content,
+       чтобы карточку автора можно было поставить перед основным текстом. */
+    .article-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .article-content {
+        display: contents;
+    }
+
+    .article-title {
+        order: 1;
+        font-size: 34px;
+        line-height: 1.15;
+        margin-bottom: 25px;
+        overflow-wrap: anywhere;
+    }
+
+    .article-card {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+    }
+
+    /* Порядок на мобильном: заголовок → аннотация → информация → автор → основной текст */
+    .article-annotation { order: 2; }
+    .article-information { order: 3; }
+    .author-card { order: 4; }
+    .article-text { order: 5; }
+
+
+    /* ---------- АННОТАЦИЯ ---------- */
+
+    .article-annotation h2 {
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    .article-annotation p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+
+    /* ---------- ИНФОРМАЦИЯ О СТАТЬЕ ---------- */
+
+    .article-information {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .information-column {
+        width: 100%;
+    }
+
+    .information-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 15px;
+    }
+
+    .information-row span {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .information-row p {
+        font-size: 18px;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* ---------- АВТОР ---------- */
+
+    .author-card {
+        position: static;
+        width: 100%;
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .author-card h2 {
+        font-size: 32px;
+    }
+
+    .author-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .author-card h3 {
+        font-size: 25px;
+        overflow-wrap: anywhere;
+    }
+
+    .author-block h4 {
+        font-size: 21px;
+    }
+
+    .author-block p,
+    .author-block li {
+        font-size: 17px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .author-email {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* ---------- ОСНОВНОЙ ТЕКСТ СТАТЬИ ---------- */
+
+    .article-text {
+        margin-top: 30px;
+        width: 100%;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .article-text h2 {
+        font-size: 27px;
+        line-height: 1.25;
+        margin-top: 45px;
+        margin-bottom: 20px;
+    }
+
+    .article-text h3 {
+        font-size: 23px;
+        line-height: 1.3;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    .article-text h4 {
+        font-size: 20px;
+        line-height: 1.3;
+        margin-top: 30px;
+        margin-bottom: 12px;
+    }
+
+    .article-text p {
+        margin-left: 0;
+        margin-bottom: 18px;
+        text-align: left;
+    }
+
+    .article-text ul,
+    .article-text ol {
+        margin: 20px 0 25px 25px;
+        padding-left: 10px;
+    }
+
+    .article-text li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .article-text blockquote {
+        margin: 30px 0;
+        padding: 20px;
+        border-left-width: 4px;
+        border-radius: 12px;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+
+    /* ---------- ИЗОБРАЖЕНИЯ В СТАТЬЯХ ---------- */
+
+    .article-text img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 30px auto;
+        border-radius: 12px;
+    }
+
+    .article-text figure {
+        margin: 30px auto;
+        max-width: 100%;
+    }
+
+    .article-text figcaption {
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+
+    /* ---------- ТАБЛИЦЫ ---------- */
+
+    .article-text table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        margin: 30px 0;
+        white-space: nowrap;
+    }
+
+    .article-text th {
+        padding: 10px;
+        font-size: 17px;
+    }
+
+    .article-text td {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+
+    /* ---------- КОД ---------- */
+
+    .article-text code {
+        font-size: 16px;
+        overflow-wrap: anywhere;
+    }
+
+    .article-text pre {
+        max-width: 100%;
+        overflow-x: auto;
+        padding: 15px;
+        margin: 25px 0;
+        border-radius: 10px;
+    }
+
+
+    /* ---------- РАЗДЕЛИТЕЛЬ ---------- */
+
+    .article-text hr {
+        margin: 40px 0;
+    }
+
+    .article-text sup {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .research-topics {
+        width: calc(100% - 30px);
+        margin: 45px auto;
+    }
+
+    #themes-header {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+
+    .topic-link {
+        grid-template-columns: 35px 1fr 30px;
+        min-height: 62px;
+        padding: 0 5px;
+    }
+
+    .topic-number {
+        font-size: 12px;
+    }
+
+    .topic-name {
+        font-size: 17px;
+        line-height: 1.25;
+    }
+
+    .topic-arrow {
+        font-size: 22px;
+    }
+
+    .topic-link:hover {
+        padding-left: 10px;
+    }
+}
+
+/* =========================================
+   МОБИЛЬНАЯ ВЕРСИЯ ГЛАВНОЙ — ТЕМЫ
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    /* Заголовок */
+    #themes-header {
+        margin: 35px 15px 25px;
+        font-size: 30px;
+    }
+
+    /* Общий контейнер тем */
+    .themes {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    /*
+       Каждый из твоих трёх блоков
+       превращается в сетку 2 × 3
+    */
+    .main-page-themes-menu {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+
+        width: 100%;
+        margin: 0 0 10px;
+    }
+
+    /* Отдельная тема */
+    .main-page-themes-menu li {
+        width: 100%;
+        height: auto;
+        min-height: 65px;
+
+        padding: 8px;
+
+        font-size: 16px;
+        line-height: 1.2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+    }
+
+    /* Ссылка занимает всю кнопку */
+    .main-page-themes-menu li a {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+    }
+}
+
+
+/* Очень маленькие телефоны */
+@media (max-width: 360px) {
+
+    .main-page-themes-menu {
+        grid-template-columns: 1fr;
+    }
+
+    .main-page-themes-menu li {
+        min-height: 55px;
+        font-size: 16px;
+    }
+
+}
+/* =========================================
+   МОБИЛЬНАЯ ВЕРСИЯ — ТЕМЫ ПУБЛИКАЦИЙ
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    /* Сам блок тем */
+    .research-topics {
+        width: calc(100% - 30px);
+        max-width: none;
+        margin: 40px 15px;
+        padding: 0;
+    }
+
+    /* Заголовок */
+    #themes-header {
+        margin: 0 0 25px 0;
+        padding: 0;
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    /* ВАЖНО:
+       на телефоне только ОДНА колонка */
+    .topics-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Одна тема */
+    .topic-link {
+        display: grid;
+        grid-template-columns: 35px minmax(0, 1fr) 30px;
+
+        width: 100%;
+        min-width: 0;
+        min-height: 62px;
+
+        padding: 0 5px;
+
+        box-sizing: border-box;
+    }
+
+    /* Номер */
+    .topic-number {
+        font-size: 12px;
+    }
+
+    /* Название */
+    .topic-name {
+        min-width: 0;
+
+        font-size: 17px;
+        line-height: 1.25;
+
+        overflow-wrap: break-word;
+    }
+
+    /* Стрелка */
+    .topic-arrow {
+        font-size: 22px;
+        text-align: right;
+    }
+
+    /* Убираем сильный сдвиг при наведении на телефоне */
+    .topic-link:hover {
+        padding-left: 8px;
+    }
+}
+
+/* #endregion МОБИЛЬНАЯ АДАПТАЦИЯ Применяется только на экранах шириной до 600px */
+
+/* =========================================================
+   ФИНАЛЬНАЯ АДАПТАЦИЯ САЙТА ДЛЯ РАЗНЫХ УСТРОЙСТВ
+   Этот блок добавлен в конец файла специально для того,
+   чтобы переопределить более ранние мобильные правила.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   НЕБОЛЬШИЕ НОУТБУКИ: 901–1200 px
+   --------------------------------------------------------- */
+@media (max-width: 1200px) and (min-width: 901px) {
+
+    header {
+        height: 120px;
+    }
+
+    .logo {
+        height: 120px;
+    }
+
+    nav {
+        gap: 25px;
+        font-size: 28px;
+    }
+
+    .login {
+        width: 220px;
+        margin: 0 15px;
+        font-size: 18px;
+        padding: 9px 15px;
+    }
+
+    .info {
+        height: auto;
+        min-height: 360px;
+    }
+
+    .info h1 {
+        font-size: 36px;
+    }
+
+    .info p {
+        font-size: 21px;
+        max-width: 600px;
+    }
+
+    .main-page-about-right {
+        max-width: 50%;
+    }
+
+    .social-buttons {
+        left: 30px;
+        gap: 30px;
+    }
+
+    .about-image {
+        height: 320px;
+    }
+
+    .main-page-button,
+    .switch-to-english {
+        width: 220px;
+        font-size: 18px;
+    }
+
+    .research-topics,
+    .research-themes-dropdown {
+        width: 92%;
+    }
+
+    .topics-list,
+    .research-topics-dropdown {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 25px;
+    }
+
+    .topic-name,
+    .research-topic-name {
+        font-size: 17px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   ПЛАНШЕТЫ: 601–900 px
+   --------------------------------------------------------- */
+@media (max-width: 900px) and (min-width: 601px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    header {
+        height: auto;
+        min-height: 100px;
+        padding: 12px 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 20px;
+    }
+
+    .logo {
+        height: 85px;
+        width: auto;
+    }
+
+    nav {
+        order: 2;
+        width: 100%;
+        flex: none;
+        gap: 15px 25px;
+        font-size: 23px;
+        flex-wrap: wrap;
+    }
+
+    .login {
+        width: 200px;
+        margin: 0;
+        font-size: 17px;
+    }
+
+    .info {
+        height: auto;
+        min-height: 0;
+        padding: 20px 25px 40px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(250px, 0.7fr);
+        gap: 25px;
+        align-items: center;
+    }
+
+    .info h1 {
+        font-size: 34px;
+        line-height: 1.15;
+        padding: 10px 0;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .info p {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+        font-size: 19px;
+        line-height: 1.4;
+        text-align: justify;
+    }
+
+    .main-page-about-right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .social-buttons {
+        left: 0;
+        width: 100%;
+        gap: 18px;
+        align-items: center;
+    }
+
+    .about-image {
+        height: 260px;
+    }
+
+    .main-page-button,
+    .switch-to-english {
+        width: min(100%, 250px);
+        font-size: 17px;
+        padding: 9px 12px;
+    }
+
+    .research-topics,
+    .research-themes-dropdown {
+        width: calc(100% - 40px);
+    }
+
+    .topics-list,
+    .research-topics-dropdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 30px;
+    }
+
+    .topic-link,
+    .research-topic-link {
+        grid-template-columns: 32px minmax(0, 1fr) 25px;
+        min-height: 58px;
+    }
+
+    .topic-name,
+    .research-topic-name {
+        font-size: 17px;
+    }
+
+    .qr-code {
+        width: min(60vw, 320px);
+        height: auto;
+    }
+
+    .qr-code-text {
+        font-size: 20px;
+        padding: 0 25px;
+    }
+
+    .about-rules-titles {
+        font-size: 30px;
+    }
+
+    .about-rules-sec-p1,
+    .about-rules-sec-p2 {
+        margin: 20px;
+        padding: 25px;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .research-layout {
+        width: calc(100% - 40px);
+        margin: 20px auto;
+        padding: 25px;
+    }
+
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .author-card {
+        position: static;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   ТЕЛЕФОНЫ: до 600 px
+   --------------------------------------------------------- */
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        padding: 12px 10px 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo {
+        height: 65px;
+        width: auto;
+        max-width: 170px;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px 15px;
+        font-size: 18px;
+    }
+
+    nav a {
+        white-space: nowrap;
+    }
+
+    .login {
+        width: min(100%, 250px);
+        margin: 0;
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+
+    /* ---------- ГЛАВНЫЙ БЛОК ---------- */
+
+    .info {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 0 15px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .info h1 {
+        width: 100%;
+        padding: 20px 0 5px;
+        margin: 0;
+        display: block;
+        font-size: 30px;
+        line-height: 1.15;
+        text-align: center;
+    }
+
+    .info p {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 8px 0;
+        font-size: 17px;
+        line-height: 1.45;
+        text-align: left;
+    }
+
+    .main-page-about-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Главную картинку убираем только на телефоне. */
+
+    .about-image {
+        display: none;
+    }
+
+    .social-buttons {
+        width: 100%;
+        position: static;
+        left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .main-page-button,
+    .switch-to-english {
+        width: min(100%, 300px);
+        min-height: 45px;
+        padding: 9px 12px;
+        font-size: 17px;
+    }
+
+    /* ---------- ТЕМЫ НА ГЛАВНОЙ ---------- */
+
+    .research-topics {
+        width: calc(100% - 30px);
+        max-width: none;
+        margin: 35px auto;
+        padding: 0;
+    }
+
+    #themes-header {
+        margin: 0 0 20px;
+        padding: 0;
+        font-size: 29px;
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    .topics-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .topic-link {
+        display: grid;
+        grid-template-columns: 32px minmax(0, 1fr) 28px;
+        width: 100%;
+        min-width: 0;
+        min-height: 58px;
+        padding: 0 5px;
+        box-sizing: border-box;
+    }
+
+    .topic-number {
+        font-size: 12px;
+    }
+
+    .topic-name {
+        min-width: 0;
+        font-size: 17px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    .topic-arrow {
+        font-size: 21px;
+        text-align: right;
+    }
+
+    .topic-link:hover {
+        padding-left: 8px;
+    }
+
+    /* ---------- ВЫПАДАЮЩИЕ ТЕМЫ ---------- */
+
+    .research-themes-dropdown {
+        width: calc(100% - 30px);
+        max-width: none;
+        margin: 35px auto;
+    }
+
+    .research-all-themes-titles {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 5px;
+        font-size: 25px;
+        line-height: 1.2;
+    }
+
+    .research-themes-arrow {
+        font-size: 23px;
+    }
+
+    .research-topics-dropdown {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 0;
+        margin-top: 10px;
+    }
+
+    .research-topic-link {
+        display: grid;
+        grid-template-columns: 32px minmax(0, 1fr) 28px;
+        min-height: 58px;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .research-topic-number {
+        font-size: 12px;
+    }
+
+    .research-topic-name {
+        min-width: 0;
+        font-size: 16px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    .research-topic-arrow {
+        font-size: 21px;
+    }
+
+    /* ---------- QR ---------- */
+
+    .qr-code {
+        width: min(75vw, 280px);
+        height: auto;
+        margin: 25px auto;
+    }
+
+    .qr-code-text {
+        padding: 0 15px;
+        font-size: 17px;
+        line-height: 1.4;
+        margin-top: 20px;
+    }
+
+    /* ---------- ABOUT / RULES ---------- */
+
+    .about-rules-titles {
+        margin: 30px 15px 20px;
+        font-size: 27px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .about-rules-sec-p1,
+    .about-rules-sec-p2 {
+        margin: 15px;
+        padding: 20px;
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .about-rules-sec-p1 ol,
+    .about-rules-sec-p2 ol {
+        padding-left: 22px;
+    }
+
+    /* ---------- СПИСОК ИССЛЕДОВАНИЙ ---------- */
+
+    .research-layout {
+        width: calc(100% - 20px);
+        margin: 15px auto 25px;
+        padding: 18px 15px;
+        box-sizing: border-box;
+    }
+
+    /* ---------- ПОЛНАЯ СТРАНИЦА ИССЛЕДОВАНИЯ ---------- */
+
+    .article-page {
+        width: calc(100% - 30px);
+        max-width: none;
+        margin: 25px auto 50px;
+    }
+
+    .back-button {
+        margin-bottom: 25px;
+        font-size: 18px;
+        padding: 8px 15px;
+    }
+
+    .article-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .article-content {
+        display: contents;
+    }
+
+    .article-title {
+        order: 1;
+        font-size: 34px;
+        line-height: 1.15;
+        margin-bottom: 25px;
+        overflow-wrap: anywhere;
+    }
+
+    .article-card {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+    }
+
+    .article-annotation {
+        order: 2;
+    }
+
+    .article-information {
+        order: 3;
+    }
+
+    /* Карточка автора находится перед основным текстом. */
+
+    .author-card {
+        order: 4;
+        position: static;
+        width: 100%;
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .article-text {
+        order: 5;
+        margin-top: 30px;
+        width: 100%;
+        max-width: 100%;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .article-annotation h2 {
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    .article-annotation p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .article-information {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .information-column {
+        width: 100%;
+    }
+
+    .information-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 15px;
+    }
+
+    .information-row span {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .information-row p {
+        font-size: 18px;
+        overflow-wrap: anywhere;
+    }
+
+    .author-card h2 {
+        font-size: 32px;
+    }
+
+    .author-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .author-card h3 {
+        font-size: 25px;
+        overflow-wrap: anywhere;
+    }
+
+    .author-block h4 {
+        font-size: 21px;
+    }
+
+    .author-block p,
+    .author-block li {
+        font-size: 17px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .author-email {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+
+    /* ---------- ТЕКСТ ИССЛЕДОВАНИЯ ---------- */
+
+    .article-text h2 {
+        font-size: 27px;
+        line-height: 1.25;
+        margin-top: 45px;
+        margin-bottom: 20px;
+    }
+
+    .article-text h3 {
+        font-size: 23px;
+        line-height: 1.3;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    .article-text h4 {
+        font-size: 20px;
+        line-height: 1.3;
+        margin-top: 30px;
+        margin-bottom: 12px;
+    }
+
+    .article-text p {
+        margin-left: 0;
+        margin-bottom: 18px;
+        text-align: left;
+    }
+
+    .article-text ul,
+    .article-text ol {
+        margin: 20px 0 25px 25px;
+        padding-left: 10px;
+    }
+
+    .article-text li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .article-text blockquote {
+        margin: 30px 0;
+        padding: 20px;
+        border-left-width: 4px;
+        border-radius: 12px;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .article-text img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 30px auto;
+        border-radius: 12px;
+    }
+
+    .article-text figure {
+        margin: 30px auto;
+        max-width: 100%;
+    }
+
+    .article-text figcaption {
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    .article-text table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        margin: 30px 0;
+        white-space: nowrap;
+    }
+
+    .article-text th {
+        padding: 10px;
+        font-size: 17px;
+    }
+
+    .article-text td {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .article-text code {
+        font-size: 16px;
+        overflow-wrap: anywhere;
+    }
+
+    .article-text pre {
+        max-width: 100%;
+        overflow-x: auto;
+        padding: 15px;
+        margin: 25px 0;
+        border-radius: 10px;
+    }
+
+    .article-text hr {
+        margin: 40px 0;
+    }
+
+    .article-text sup {
+        font-size: 12px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ: до 380 px
+   --------------------------------------------------------- */
+@media (max-width: 380px) {
+
+    .logo {
+        height: 58px;
+    }
+
+    nav {
+        font-size: 16px;
+        gap: 7px 12px;
+    }
+
+    .login {
+        width: min(100%, 230px);
+        font-size: 15px;
+    }
+
+    .info {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .info h1 {
+        font-size: 27px;
+    }
+
+    .info p {
+        font-size: 16px;
+    }
+
+    .main-page-button,
+    .switch-to-english {
+        width: min(100%, 270px);
+        font-size: 16px;
+    }
+
+    #themes-header {
+        font-size: 26px;
+    }
+
+    .topic-name {
+        font-size: 16px;
+    }
+
+    .topic-link {
+        min-height: 55px;
+    }
+
+    .research-all-themes-titles {
+        font-size: 23px;
+    }
+
+    .research-topic-name {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   КОНЕЦ ФИНАЛЬНОЙ АДАПТАЦИИ
+   ========================================================= */
+
+
+/* =========================================================
+   ФИНАЛЬНЫЕ ПРАВКИ
+   ========================================================= */
+
+/* Темы публикаций: при наведении меняется только цвет текста.
+   Фон остаётся белым. */
+.topic-link:hover,
+.research-topic-link:hover {
+    background-color: #fff;
+    color: #4a267b;
+}
+
+.topic-link:hover .topic-name,
+.research-topic-link:hover .research-topic-name {
+    color: #4a267b;
+    text-decoration: underline;
+    text-decoration-color: #4a267b;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+/* На мобильных карточка статьи становится компактнее.
+   Эти правила применяются к карточке списка, а не к полному тексту исследования. */
+@media (max-width: 600px) {
+
+    .research-layout {
+        width: calc(100% - 24px);
+        margin: 12px auto 20px;
+        padding: 16px 13px;
+        border-radius: 12px;
+    }
+
+    .research-head {
+        gap: 14px;
+    }
+
+    .research-left {
+        gap: 10px;
+    }
+
+    .name-short-inf {
+        font-size: 25px;
+        line-height: 1.18;
+    }
+
+    .info-line {
+        gap: 8px 15px;
+        font-size: 14px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        row-gap: 9px;
+        column-gap: 0;
+        margin-top: 12px;
+        padding-bottom: 14px;
+    }
+
+    .author-short,
+    .category-short,
+    .date-short,
+    .theme-short,
+    .language-short,
+    .author-short-inf,
+    .category-short-inf,
+    .date-short-inf,
+    .theme-short-inf,
+    .language-short-inf {
+        font-size: 14px;
+        line-height: 1.25;
+    }
+
+    .button-read {
+        width: 85px;
+        height: 38px;
+        padding: 6px 10px;
+        font-size: 15px;
+    }
+}
+
+/* Очень маленькие телефоны */
+@media (max-width: 380px) {
+    .research-layout {
+        width: calc(100% - 18px);
+        padding: 13px 11px;
+    }
+
+    .name-short-inf {
+        font-size: 22px;
+    }
+
+    .author-short,
+    .category-short,
+    .date-short,
+    .theme-short,
+    .language-short,
+    .author-short-inf,
+    .category-short-inf,
+    .date-short-inf,
+    .theme-short-inf,
+    .language-short-inf {
+        font-size: 13px;
+    }
+
+    .button-read {
+        width: 78px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================
+   FIX: CENTER TEXT IN ARTICLE READ BUTTON
+   ========================================= */
+
+.button-read,
+.read-button,
+.article-read-button,
+.research-read-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 1.1;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .button-read,
+    .read-button,
+    .article-read-button,
+    .research-read-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+
+/* =========================================================
+   FINAL FIXES — TABLET 601–750 px + TOPIC HOVER
+   ========================================================= */
+
+/* Темы публикаций: при наведении только сиреневый текст
+   и подчёркивание. Белый фон сохраняется. */
+.topic-link:hover,
+.research-topic-link:hover {
+    background-color: #fff;
+    padding-left: 0;
+}
+
+.topic-link:hover .topic-name,
+.research-topic-link:hover .research-topic-name {
+    color: #4a267b;
+    text-decoration: underline;
+    text-decoration-color: #4a267b;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.topic-link:hover .topic-arrow,
+.research-topic-link:hover .research-topic-arrow {
+    color: #4a267b;
+    transform: translateX(5px);
+}
+
+/* ---------------------------------------------------------
+   Планшет / узкий планшет: 601–750 px
+   На такой ширине главная страница уже ведёт себя как
+   компактная мобильная версия, чтобы ничего не сжималось.
+   --------------------------------------------------------- */
+
+@media (max-width: 750px) and (min-width: 601px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    header {
+        height: auto;
+        min-height: 0;
+        padding: 12px 15px 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo {
+        height: 70px;
+        width: auto;
+        max-width: 180px;
+    }
+
+    nav {
+        width: 100%;
+        flex: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        font-size: 22px;
+    }
+
+    nav a {
+        white-space: nowrap;
+    }
+
+    .login {
+        width: min(100%, 240px);
+        margin: 0;
+        font-size: 17px;
+        padding: 8px 14px;
+    }
+
+    /* ---------- ГЛАВНЫЙ БЛОК ---------- */
+
+    .info {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 10px 25px 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .info h1 {
+        width: 100%;
+        margin: 0;
+        padding: 15px 0 5px;
+        display: block;
+        font-size: 36px;
+        line-height: 1.15;
+        text-align: center;
+    }
+
+    .info p {
+        width: 100%;
+        max-width: 650px;
+        margin: 0;
+        padding: 5px 0;
+        display: block;
+        font-size: 19px;
+        line-height: 1.45;
+        text-align: left;
+    }
+
+    .main-page-about-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        position: static;
+    }
+
+    /* На узком планшете картинка тоже убирается:
+       она больше не сжимает текст и кнопки. */
+    .about-image {
+        display: none;
+    }
+
+    .social-buttons {
+        width: 100%;
+        position: static;
+        left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .main-page-button,
+    .switch-to-english {
+        width: min(100%, 300px);
+        min-height: 46px;
+        padding: 9px 14px;
+        font-size: 18px;
+    }
+
+    /* ---------- ТЕМЫ ПУБЛИКАЦИЙ ---------- */
+
+    .research-topics {
+        width: calc(100% - 50px);
+        max-width: none;
+        margin: 45px auto;
+    }
+
+    #themes-header {
+        margin: 0 0 25px;
+        font-size: 32px;
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    .topics-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 25px;
+        width: 100%;
+    }
+
+    .topic-link {
+        grid-template-columns: 32px minmax(0, 1fr) 28px;
+        min-height: 60px;
+        width: 100%;
+        padding: 0 3px;
+    }
+
+    .topic-number {
+        font-size: 12px;
+    }
+
+    .topic-name {
+        font-size: 17px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    .topic-arrow {
+        font-size: 21px;
+    }
+
+    /* ---------- ВЫПАДАЮЩИЕ ТЕМЫ ---------- */
+
+    .research-themes-dropdown {
+        width: calc(100% - 50px);
+        max-width: none;
+        margin: 40px auto;
+    }
+
+    .research-all-themes-titles {
+        font-size: 28px;
+        padding: 15px 5px;
+    }
+
+    .research-topics-dropdown {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 25px;
+        margin-top: 15px;
+    }
+
+    .research-topic-link {
+        grid-template-columns: 32px minmax(0, 1fr) 28px;
+        min-height: 60px;
+        width: 100%;
+        padding: 0 3px;
+    }
+
+    .research-topic-name {
+        font-size: 16px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    /* ---------- КАРТОЧКА ИССЛЕДОВАНИЯ ---------- */
+
+    .research-layout {
+        width: calc(100% - 40px);
+        margin: 20px auto 30px;
+        padding: 22px 20px;
+    }
+
+    .research-head {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .research-left {
+        width: 100%;
+        gap: 14px;
+    }
+
+    .name-short-inf {
+        font-size: 30px;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 15px;
+        column-gap: 25px;
+        margin-top: 15px;
+        padding-bottom: 20px;
+    }
+
+    .author-short,
+    .category-short,
+    .date-short,
+    .theme-short,
+    .language-short,
+    .author-short-inf,
+    .category-short-inf,
+    .date-short-inf,
+    .theme-short-inf,
+    .language-short-inf {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+    }
+
+    .button-read {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        min-width: 120px;
+        height: 44px;
+        padding: 0 12px;
+        font-size: 17px;
+        line-height: 1;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+/* ---------------------------------------------------------
+   Очень узкий планшет: 601–650 px
+   Одна колонка для карточек тем — чтобы длинные названия
+   никогда не ломали сетку.
+   --------------------------------------------------------- */
+
+@media (max-width: 650px) and (min-width: 601px) {
+
+    .topics-list,
+    .research-topics-dropdown {
+        grid-template-columns: 1fr;
+    }
+
+    .topic-link,
+    .research-topic-link {
+        min-height: 58px;
+    }
+}
+
+
+/* =========================================================
+   FINAL MOBILE FIX — VERY NARROW PHONES (320–360 px)
+   =========================================================
+   The previous mobile rules already hid overflow on html/body,
+   but some child elements could still be wider than the viewport.
+   This block fixes the actual sources instead of only hiding them.
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    /* ---------- VIEWPORT ---------- */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: clip;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    /* ---------- GENERAL ELEMENTS ---------- */
+
+    header,
+    main,
+    section,
+    article,
+    footer,
+    details,
+    .info,
+    .research-topics,
+    .research-themes-dropdown,
+    .research-layout,
+    .article-page,
+    .article-layout,
+    .article-content,
+    .article-card,
+    .author-card {
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    img,
+    video,
+    iframe,
+    svg,
+    canvas {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+        width: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
+        overflow: hidden;
+    }
+
+    nav {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        gap: 7px 10px;
+        overflow: hidden;
+    }
+
+    nav a {
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    .logo {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .login {
+        width: min(100%, 220px);
+        max-width: calc(100% - 20px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ---------- MAIN PAGE ---------- */
+
+    .info {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        overflow: hidden;
+    }
+
+    .info h1,
+    .info p,
+    .main-page-about-right,
+    .social-buttons {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .info h1 {
+        font-size: 26px;
+        overflow-wrap: anywhere;
+    }
+
+    .info p {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+
+    .social-buttons {
+        position: static;
+        left: auto;
+    }
+
+    .main-page-button,
+    .switch-to-english {
+        width: min(100%, 260px);
+        max-width: calc(100% - 20px);
+    }
+
+    /* ---------- PUBLICATION TOPICS ---------- */
+
+    .research-topics {
+        width: calc(100% - 20px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #themes-header {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 25px;
+        overflow-wrap: anywhere;
+    }
+
+    .topics-list,
+    .research-topics-dropdown {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .topic-link,
+    .research-topic-link {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        grid-template-columns: 28px minmax(0, 1fr) 24px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    .topic-name,
+    .research-topic-name {
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: normal;
+        font-size: 15px;
+    }
+
+    .topic-arrow,
+    .research-topic-arrow {
+        min-width: 0;
+    }
+
+    /* ---------- DROPDOWN TOPICS ---------- */
+
+    .research-themes-dropdown {
+        width: calc(100% - 20px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .research-all-themes-titles {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding-left: 2px;
+        padding-right: 2px;
+        font-size: 21px;
+        overflow-wrap: anywhere;
+    }
+
+    /* ---------- RESEARCH CARD ---------- */
+
+    .research-layout {
+        width: calc(100% - 16px);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 12px 10px;
+        overflow: hidden;
+    }
+
+    .research-head,
+    .research-left,
+    .info-grid,
+    .keywords-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .name-short-inf {
+        max-width: 100%;
+        min-width: 0;
+        font-size: 21px;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    .info-line {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        gap: 6px 10px;
+    }
+
+    .author-short,
+    .category-short,
+    .date-short,
+    .theme-short,
+    .language-short,
+    .author-short-inf,
+    .category-short-inf,
+    .date-short-inf,
+    .theme-short-inf,
+    .language-short-inf,
+    .keywords-short,
+    .keywords-short-inf,
+    .annotation-short,
+    .annotation-short-inf {
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    .button-read {
+        width: 78px;
+        min-width: 0;
+        max-width: 100%;
+        height: 35px;
+        padding: 0 8px;
+        white-space: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        line-height: 1.05;
+        flex-shrink: 1;
+    }
+
+    /* ---------- FULL ARTICLE ---------- */
+
+    .article-page {
+        width: calc(100% - 20px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .article-layout {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .article-content,
+    .article-card,
+    .article-text,
+    .author-card,
+    .article-information,
+    .information-column,
+    .information-row {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .article-title {
+        max-width: 100%;
+        font-size: 28px;
+        overflow-wrap: anywhere;
+    }
+
+    .article-card,
+    .author-card {
+        padding-left: 12px;
+        padding-right: 12px;
+        overflow: hidden;
+    }
+
+    .article-text {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+    }
+
+    .article-text p,
+    .article-text h2,
+    .article-text h3,
+    .article-text h4,
+    .article-text li,
+    .article-text blockquote {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .article-text ul,
+    .article-text ol {
+        max-width: calc(100% - 20px);
+        margin-left: 20px;
+        padding-left: 8px;
+    }
+
+    .article-text blockquote {
+        padding: 15px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .article-text img,
+    .article-text figure {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .article-text table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .article-text pre {
+        max-width: 100%;
+        overflow-x: auto;
+        box-sizing: border-box;
+    }
+
+    /* ---------- EXTRA SAFETY FOR LONG TEXT ---------- */
+
+    .author-email,
+    .author-card h3,
+    .author-block p,
+    .author-block li,
+    .information-row p {
+        max-width: 100%;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+}
