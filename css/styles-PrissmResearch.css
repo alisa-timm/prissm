@@ -771,7 +771,7 @@ nav a:hover {
     font-size: 30px;
     font-weight: normal;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 /* БЛОКИ АВТОРА */
@@ -937,14 +937,14 @@ nav a:hover {
 
 .article-text th {
     background: #f5f2ff;
-    padding: 16px;
+    padding: 12px;
     border: 1px solid #dddddd;
     font-size: 22px;
     font-weight: bold;
 }
 
 .article-text td {
-    padding: 16px;
+    padding: 12px;
     border: 1px solid #dddddd;
     font-size: 21px;
 }
@@ -3401,3 +3401,4 @@ nav a:hover {
         word-break: break-word;
     }
 }
+
