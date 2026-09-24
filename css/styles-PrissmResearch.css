@@ -3449,7 +3449,7 @@ nav a:hover {
 
 .creator-card img {
     display: block;
-    width: 80%;
+    width: 70%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     margin: 0 auto;
@@ -3493,7 +3493,7 @@ nav a:hover {
     }
 
     .creator-card img {
-        width: 85%;
+        width: 75%;
     }
 
     .creator-name {
